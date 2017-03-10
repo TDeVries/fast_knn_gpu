@@ -17,13 +17,13 @@ import tensorflow as tf
 import time
 import os
 from sklearn.neighbors import KNeighborsClassifier
+from tensorflow.examples.tutorials.mnist import input_data
 
 # Restrict tensorflow to only use the first GPU
-os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"   
-os.environ["CUDA_VISIBLE_DEVICES"]="0"
+os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 # Import MNIST data
-from tensorflow.examples.tutorials.mnist import input_data
 mnist = input_data.read_data_sets("/tmp/data/", one_hot=False)
 
 # Load in all samples
@@ -34,14 +34,14 @@ X_test, Y_test = mnist.test.next_batch(100)
 ### sklearn KNN ###
 print("Evaluating sklearn KNN")
 neigh = KNeighborsClassifier(n_neighbors=1)
-neigh.fit(X_train, Y_train) 
+neigh.fit(X_train, Y_train)
 start = time.time()
 pred = neigh.predict(X_test)
 end = time.time()
 
-accuracy = np.sum(pred == Y_test).astype(float)/len(Y_test)
-print("Accuracy: " + str(accuracy*100) + '%')
-print('Took', end-start, 'seconds')
+accuracy = np.sum(pred == Y_test).astype(float) / len(Y_test)
+print("Accuracy: " + str(accuracy * 100) + '%')
+print('Took', end - start, 'seconds')
 
 
 ### tensorflow KNN ###
@@ -66,9 +66,7 @@ with tf.Session() as sess:
     nn_index = sess.run(pred, feed_dict={x_keys: X_train, x_queries: X_test})
     end = time.time()
 
-    accuracy = np.sum(Y_train[nn_index] == Y_test).astype(float)/len(Y_test)
+    accuracy = np.sum(Y_train[nn_index] == Y_test).astype(float) / len(Y_test)
 
-    print("Accuracy: " + str(accuracy*100) + '%')
-    print('Took', end-start, 'seconds')
-
-
+    print("Accuracy: " + str(accuracy * 100) + '%')
+    print('Took', end - start, 'seconds')
