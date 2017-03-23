@@ -5,9 +5,9 @@ by Lukasz Kaiser, Ofir Nachun, Aurko Roy, and Samy Bengio
 Paper: https://openreview.net/pdf?id=SJTQLdqlg
 Code: https://github.com/tensorflow/models/tree/master/learning_to_remember_rare_events
 
-Takes ~560 seconds for sklearn implementation to find 10,000 nearest neighbours
-Takes ~0.17 seconds for Tensorflow to find 10,000 nearest neighbours (using GTX Titan X Pascal)
->3000x speed up!
+Takes ~60 seconds for sklearn implementation to find 1,000 nearest neighbours
+Takes ~0.29 seconds for theano knn to find 1,000 nearest neighbours (using GTX Titan X Pascal)
+>200x speed up
 '''
 
 from __future__ import print_function
