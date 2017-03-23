@@ -20,6 +20,6 @@ Took 0.0756950378418 seconds
 ```
 
 ## Dependencies
-tensorflow-gpu 1.0.0 (for tensorflow version)
-theano 0.9 (for theano version)
-scikit-learn 0.18.1 
+tensorflow-gpu 1.0.0 (for tensorflow version)  
+theano 0.9 (for theano version)  
+scikit-learn 0.18.1  
